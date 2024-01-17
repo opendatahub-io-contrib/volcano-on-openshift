@@ -46,6 +46,7 @@ helm_install(){
     helm upgrade \
         --install ${APP_NAME} volcano-sh/volcano \
         --namespace ${PROJECT} \
+        --version 1.8.2 \
         --set uid=${PROJECT_UID} \
         --set gid=${PROJECT_GID}
 }
