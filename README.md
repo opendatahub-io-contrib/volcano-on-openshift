@@ -1,6 +1,8 @@
 # Volcano on OpenShift
 
-Deploy Volcano on OpenShift
+[Volcano](https://volcano.sh/en/) is a batch scheduler designed to run on Kubernetes and commonly used with Spark workloads.
+
+This repo is designed to showcase how to install and utilize Volcano on Openshift.
 
 ## Requirements
 
