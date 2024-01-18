@@ -44,6 +44,11 @@ To use all of the features of the Volcano scheduler with the Google Spark Operat
 
 For example:
 
-```
-helm upgrade --install  spark-operator spark-operator/spark-operator --namespace spark-operator  --create-namespace --set webhook.enable=true --set resourceQuotaEnforcement.enable=true --set batchScheduler.enable=true
+```sh
+helm upgrade --install spark-operator spark-operator/spark-operator \
+     --namespace spark-operator  --create-namespace \
+     --set image.tag=v1beta2-1.3.3-3.1.1 \
+     --set webhook.enable=true \
+     --set resourceQuotaEnforcement.enable=true \
+     --set batchScheduler.enable=true
 ```
