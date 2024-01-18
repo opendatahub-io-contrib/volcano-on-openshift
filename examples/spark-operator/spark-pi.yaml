@@ -1,0 +1,30 @@
+apiVersion: "sparkoperator.k8s.io/v1beta2"
+kind: SparkApplication
+metadata:
+  name: pyspark-pi
+spec:
+  type: Python
+  pythonVersion: "3"
+  mode: cluster
+  batchScheduler: "volcano"
+  batchSchedulerOptions:
+    queue: "spark-queue"
+  image: "quay.io/opendatahub-contrib/pyspark:s3.3.1-h3.3.4_v0.1.1"
+  imagePullPolicy: Always
+  mainApplicationFile: local:///opt/spark/examples/src/main/python/pi.py
+  sparkVersion: "3.3.1"
+  restartPolicy:
+    type: OnFailure
+    onFailureRetries: 3
+    onFailureRetryInterval: 10
+    onSubmissionFailureRetries: 5
+    onSubmissionFailureRetryInterval: 20
+  driver:
+    serviceAccount: 'spark-operator-spark'
+    cores: 1
+    coreLimit: "1200m"
+    memory: "512m"
+  executor:
+    cores: 1
+    instances: 5
+    memory: "512m"

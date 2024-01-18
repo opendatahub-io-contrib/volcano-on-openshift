@@ -1,0 +1,10 @@
+apiVersion: scheduling.volcano.sh/v1beta1
+kind: Queue
+metadata:
+  name: spark-queue
+spec:
+  weight: 4
+  reclaimable: false
+  capability:
+    cpu: 10
+    memory: 20Gi
