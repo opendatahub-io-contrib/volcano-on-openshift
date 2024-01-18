@@ -32,3 +32,18 @@ In order to get Volcano running in compliance with the default OpenShift securit
 The `install-volcano.sh` script automatically queries the `volcano-system` project and sets the correct UID/GID for you.
 
 If you choose to utilize a different method of installation you will need to configure the these settings manually.
+
+### Usage with Spark
+
+To use all of the features of the Volcano scheduler with the Google Spark Operator, the batchScheduler feature must be enabled on the Spark Operator installation.  If using the spark-operator helm chart, be sure the following options are enabled:
+
+```sh
+--set batchScheduler.enable=true 
+--set webhook.enable=true
+```
+
+For example:
+
+```
+helm upgrade --install  spark-operator spark-operator/spark-operator --namespace spark-operator  --create-namespace --set webhook.enable=true --set resourceQuotaEnforcement.enable=true --set batchScheduler.enable=true
+```
